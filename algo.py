@@ -29,7 +29,7 @@ class Individual:
 
 
 # takes in a population & f(x) and returns collection of strong individuals
-def GetStrongPopulation(population , fx , Range = None):
+def GetStrongPopulation(population , fx):
     
     # calculate fx for each individual
     fx_Res = [fx(individual) for individual in population]
