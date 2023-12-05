@@ -28,7 +28,7 @@ class Individual:
         return f"Chromosome: {self.Chromosome} , Fitness: {self.Fitness} , Probability: {self.Probability} , ExpectedCount: {self.ExpectedCount} , ActualCount: {self.ActualCount}"
 
 
-# takes in a population & f(x) with an optional Range (type:range) and returns collection of strong individuals
+# takes in a population & f(x) and returns collection of strong individuals
 def GetStrongPopulation(population , fx , Range = None):
     
     # calculate fx for each individual
