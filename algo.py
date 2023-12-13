@@ -43,15 +43,36 @@ def GetStrongPopulation(population , fx):
     Individuals = [ Individual(population[i] , fx_Res[i] , summation , avg) for i in range(len(population)) ]
 
     # sort individuals
-    Individuals.sort()
+    Individuals.sort(reverse=True)
 
     # return strong individuals
     strongIndividuals = []
     for individual in Individuals:
         if individual.ActualCount > 0:
             strongIndividuals.append(individual)
+        else:
+            break
     return strongIndividuals 
+
+# performs crossover between two individuals based on cut points
+def PerformCrossOver(individual1 , individual2 , cut_points = []):
+    offspring1 = ""
+    offspring2 = ""
+
+    for i in range(len(cut_points) - 1):
+        if i % 2 == 0:
+            offspring1 += individual1[cut_points[i] : cut_points[i+1]]
+            offspring2 += individual2[cut_points[i] : cut_points[i+1]]
+        else:
+            offspring1 += individual2[cut_points[i] : cut_points[i+1]]
+            offspring2 += individual1[cut_points[i] : cut_points[i+1]]
+    
+    return offspring1 , offspring2
+
+# generates uniform cut points based on frequency
+def UniformCutPoints(length , frequency = 1):
+    return [i for i in range(0 , length + 1 , frequency)]
 
 In = GetStrongPopulation([13 , 24 , 8 , 19] , lambda x: x**2)
 
-print(In)
+print(PerformCrossOver("1100" , "0011" , UniformCutPoints(4 , 2)))
