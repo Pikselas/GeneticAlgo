@@ -12,7 +12,7 @@ B = [0.1, 0.3, 0.5, 0.7]
 C = [0.2, 0.3, 0.4, 0.5]
 
 # Union
-print(FuzzyOperation(zip(A, B, C), min))
+print(FuzzyOperation(zip(A, B, C), max))
 
 # Intersection
-print(FuzzyOperation(zip(A, B, C), max))
+print(FuzzyOperation(zip(A, B, C), min))
